@@ -1,4 +1,4 @@
-FROM mhart/alpine-node:10
+FROM mhart/alpine-node:12
 
 # create app directory and use it as the working directory
 RUN mkdir -p /srv/app/backend
