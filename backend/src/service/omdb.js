@@ -5,6 +5,7 @@ export const fetchMovies = async ({ title, type, year, page }) => {
   const {
     omdb: { url, apiKey },
   } = config;
+
   const { data } = await axios.get(url, {
     params: {
       s: title,
@@ -15,6 +16,5 @@ export const fetchMovies = async ({ title, type, year, page }) => {
     },
   });
 
-  console.log(data);
   return data;
 };

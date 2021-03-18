@@ -11,3 +11,16 @@ services:
       - ${BACKEND_PORT}:${BACKEND_PORT}
     volumes:
       - ./backend/src:/srv/app/backend/src
+
+  client:
+    build: "./frontend"
+    expose:
+      - ${FRONT_END_PORT}
+    env_file:
+      - .env
+    ports:
+      - ${FRONT_END_PORT}:${FRONT_END_PORT}
+    links:
+      - server
+    volumes:
+      - ./frontend/src:/srv/app/frontend/src
