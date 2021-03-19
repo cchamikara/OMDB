@@ -1,4 +1,4 @@
-import { Header } from "./components";
+import { Header, Navigation, Movie } from "./components";
 
 import "./App.scss";
 
@@ -6,7 +6,10 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <div>Content goes here</div>
+      <div className="App-content">
+        <Navigation />
+        <Movie />
+      </div>
     </div>
   );
 }

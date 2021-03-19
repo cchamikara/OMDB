@@ -1,0 +1,114 @@
+.MovieDetails {
+  padding: 0 20px;
+  width: 70%;
+
+  &-poster {
+    width: 200px;
+    border-radius: 10px;
+  }
+
+  &-brief {
+    display: flex;
+
+    &-content {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 0 15px;
+    }
+
+    &-watchlist {
+      display: flex;
+      justify-content: flex-end;
+
+      &-button {
+        background: none;
+        border: 1px solid gray;
+        padding: 10px 20px;
+
+        border-radius: 5px;
+
+        &-text {
+          font-size: 16px;
+          padding-left: 10px;
+        }
+      }
+    }
+
+    &-title {
+      font-size: 40px;
+      font-weight: bold;
+    }
+
+    &-rate {
+      height: 20px;
+      border-radius: 5px;
+      border: 1px solid;
+      padding: 3px 10px;
+    }
+
+    &-short {
+      display: flex;
+      align-items: center;
+      margin-top: 30px;
+
+      span,
+      div {
+        padding-left: 10px;
+        font-size: 18px;
+        color: gray;
+      }
+    }
+
+    &-cast {
+      margin-top: 15px;
+      font-size: 18px;
+      color: gray;
+    }
+    &-director {
+      margin-top: 5px;
+      font-size: 18px;
+      color: gray;
+    }
+  }
+
+  &-plot {
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    padding: 20px 60px 20px 0;
+    margin-top: 20px;
+    line-height: 24px;
+
+    font-size: 18px;
+    color: gray;
+  }
+
+  &-ratings {
+    margin-top: 30px;
+    display: flex;
+    width: 100%;
+
+    &-source {
+      text-align: center;
+      width: 33.33%;
+      padding: 10px 0;
+      border-right: 1px solid gray;
+    }
+
+    &-source:last-child {
+      border-right: none;
+    }
+
+    &-sourceName {
+      font-size: 16px;
+      color: gray;
+    }
+
+    &-value {
+      margin-bottom: 10px;
+      font-size: 18px;
+      color: gray;
+    }
+  }
+}
