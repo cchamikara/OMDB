@@ -1,0 +1,19 @@
+.Header {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  background: #666666;
+  padding: 20px;
+
+  &-search {
+    display: flex;
+    align-items: center;
+  }
+
+  &-filters {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+}

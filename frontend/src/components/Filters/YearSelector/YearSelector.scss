@@ -1,0 +1,41 @@
+.YearSelector {
+  margin-right: 20px;
+
+  &-title {
+    padding-left: 20px;
+    text-transform: uppercase;
+  }
+
+  &-Slider {
+    display: flex;
+    width: 400px;
+    margin-top: 5px;
+    align-items: center;
+
+    &-label {
+      padding: 0 20px;
+    }
+  }
+}
+
+.input-range {
+  &__slider {
+    background: #c4c4c4;
+    border: none;
+  }
+
+  &__track {
+    background: white;
+  }
+
+  &__track--active {
+    background: #c4c4c4;
+  }
+
+  &__label--container,
+  &__label--value,
+  &__label--min,
+  &__label--max {
+    display: none;
+  }
+}
