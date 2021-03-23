@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookmark } from "@fortawesome/free-regular-svg-icons";
 
-import poster from "../../assets/starwars.jpg";
+import poster from "../../assets/avatar.jpg";
 import "./MovieDetails.scss";
 
 const Movie = () => {

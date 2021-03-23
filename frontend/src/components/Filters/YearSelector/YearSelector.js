@@ -1,14 +1,13 @@
 import { useState } from "react";
 import InputRange from "react-input-range";
 
+import config from "../../../config";
 import "react-input-range/lib/css/index.css";
+
 import "./YearSelector.scss";
 
-const YearSelector = () => {
-  const [value, setValue] = useState({
-    min: 1970,
-    max: 2015,
-  });
+const YearSelector = ({ onChange }) => {
+  const [value, setValue] = useState(config.yearRange);
 
   return (
     <div className="YearSelector">
@@ -20,6 +19,10 @@ const YearSelector = () => {
           minValue={1950}
           value={value}
           onChange={(value) => setValue(value)}
+          onChangeComplete={(value) => {
+            const { min, max } = value;
+            onChange({ value: `${min}-${max}`, type: "year" });
+          }}
         />
         <span className="YearSelector-Slider-label">{value.max}</span>
       </div>

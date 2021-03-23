@@ -1,16 +1,20 @@
-import { Header, Navigation, Movie } from "./components";
+import { Provider } from "react-redux";
+
+import store from "./store";
+import { Header, Content } from "./components";
 
 import "./App.scss";
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <div className="App-content">
-        <Navigation />
-        <Movie />
+    <Provider store={store}>
+      <div className="App">
+        <Header />
+        <div className="App-content">
+          <Content />
+        </div>
       </div>
-    </div>
+    </Provider>
   );
 }
 

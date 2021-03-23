@@ -1,140 +1,39 @@
-import poster from "../../assets/starwars.jpg";
+import { useSelector } from "react-redux";
+
 import "./Navigation.scss";
 
 const Navigation = () => {
+  const {
+    movies: { Search: movies, totalResults },
+  } = useSelector((state) => state);
+
   return (
     <div className="Navigation">
-      <div className="Navigation-resultCount">582 Results</div>
+      <div className="Navigation-resultCount">
+        {totalResults && `${totalResults} Results`}
+      </div>
 
       <div className="Navigation-results">
-        <div
-          className="Navigation-movie"
-          onClick={() => console.log("clicked")}
-        >
-          <img
-            src={poster}
-            alt="star wars"
-            className="Navigation-movie-poster"
-          />
-          <div className="Navigation-movie-description">
-            <div className="Navigation-movie-title">
-              Star Wars: Episode IV - A New Hope
+        {(movies || []).map(({ imdbID, Poster, Title, Year }) => (
+          <div
+            key={imdbID}
+            className="Navigation-movie"
+            onClick={() => console.log(Title)}
+          >
+            <div>
+              <img
+                src={Poster}
+                alt={Title}
+                className="Navigation-movie-poster"
+              />
             </div>
-            <div className="Navigation-movie-year">1977</div>
-          </div>
-        </div>
 
-        <div className="Navigation-movie">
-          <img
-            src={poster}
-            alt="star wars"
-            className="Navigation-movie-poster"
-          />
-          <div className="Navigation-movie-description">
-            <div className="Navigation-movie-title">
-              Star Wars: Episode IV - A New Hope
+            <div className="Navigation-movie-description">
+              <div className="Navigation-movie-title">{Title}</div>
+              <div className="Navigation-movie-year">{Year}</div>
             </div>
-            <div className="Navigation-movie-year">1977</div>
           </div>
-        </div>
-
-        <div className="Navigation-movie">
-          <img
-            src={poster}
-            alt="star wars"
-            className="Navigation-movie-poster"
-          />
-          <div className="Navigation-movie-description">
-            <div className="Navigation-movie-title">
-              Star Wars: Episode IV - A New Hope
-            </div>
-            <div className="Navigation-movie-year">1977</div>
-          </div>
-        </div>
-
-        <div className="Navigation-movie">
-          <img
-            src={poster}
-            alt="star wars"
-            className="Navigation-movie-poster"
-          />
-          <div className="Navigation-movie-description">
-            <div className="Navigation-movie-title">
-              Star Wars: Episode IV - A New Hope
-            </div>
-            <div className="Navigation-movie-year">1977</div>
-          </div>
-        </div>
-
-        <div className="Navigation-movie">
-          <img
-            src={poster}
-            alt="star wars"
-            className="Navigation-movie-poster"
-          />
-          <div className="Navigation-movie-description">
-            <div className="Navigation-movie-title">
-              Star Wars: Episode IV - A New Hope
-            </div>
-            <div className="Navigation-movie-year">1977</div>
-          </div>
-        </div>
-
-        <div className="Navigation-movie">
-          <img
-            src={poster}
-            alt="star wars"
-            className="Navigation-movie-poster"
-          />
-          <div className="Navigation-movie-description">
-            <div className="Navigation-movie-title">
-              Star Wars: Episode IV - A New Hope
-            </div>
-            <div className="Navigation-movie-year">1977</div>
-          </div>
-        </div>
-
-        <div className="Navigation-movie">
-          <img
-            src={poster}
-            alt="star wars"
-            className="Navigation-movie-poster"
-          />
-          <div className="Navigation-movie-description">
-            <div className="Navigation-movie-title">
-              Star Wars: Episode IV - A New Hope
-            </div>
-            <div className="Navigation-movie-year">1977</div>
-          </div>
-        </div>
-
-        <div className="Navigation-movie">
-          <img
-            src={poster}
-            alt="star wars"
-            className="Navigation-movie-poster"
-          />
-          <div className="Navigation-movie-description">
-            <div className="Navigation-movie-title">
-              Star Wars: Episode IV - A New Hope
-            </div>
-            <div className="Navigation-movie-year">1977</div>
-          </div>
-        </div>
-
-        <div className="Navigation-movie">
-          <img
-            src={poster}
-            alt="star wars"
-            className="Navigation-movie-poster"
-          />
-          <div className="Navigation-movie-description">
-            <div className="Navigation-movie-title">
-              Star Wars: Episode IV - A New Hope
-            </div>
-            <div className="Navigation-movie-year">1977</div>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );

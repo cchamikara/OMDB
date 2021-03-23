@@ -3,38 +3,41 @@ import Radio from "../Radio/Radio";
 
 import "./TypeSelector.scss";
 
-const TypeSelector = () => {
-  const [selected, setSelected] = useState("any");
+const TypeSelector = ({ onChange }) => {
+  const [selected, setSelected] = useState("");
 
-  console.log(selected);
+  const onTypeChange = (value) => {
+    setSelected(value);
+    onChange({ value, type: "type" });
+  };
 
   return (
     <div className="Types">
       <span className="Types-title">Types</span>
       <div className="Types-radio">
         <Radio
-          value="any"
+          value=""
           selected={selected}
           text="Any"
-          onChange={setSelected}
+          onChange={onTypeChange}
         />
         <Radio
           value="movies"
           selected={selected}
           text="Movies"
-          onChange={setSelected}
+          onChange={onTypeChange}
         />
         <Radio
           value="series"
           selected={selected}
           text="Series"
-          onChange={setSelected}
+          onChange={onTypeChange}
         />
         <Radio
           value="episodes"
           selected={selected}
           text="Episodes"
-          onChange={setSelected}
+          onChange={onTypeChange}
         />
       </div>
     </div>

@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 
 import config from "./config";
 
@@ -8,6 +9,7 @@ import getOmdbData from "./middleware/getOmdbData";
 import getFromCache from "./middleware/getFromCache";
 
 const app = express();
+app.use(cors());
 const api = new express.Router();
 
 /**
