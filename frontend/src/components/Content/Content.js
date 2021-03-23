@@ -6,7 +6,6 @@ import "./Content.scss";
 
 const Content = () => {
   const data = useSelector((state) => state);
-  console.log(data);
 
   const RenderContent = ({ isLoading, searchString, movies }) => {
     if (isLoading) {

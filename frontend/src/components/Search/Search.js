@@ -4,8 +4,8 @@ import { debounce } from "lodash";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/fontawesome-free-solid";
-import { updateMovieTitle } from "../../store/actions";
 
+import { updateMovieTitle } from "../../store/actions";
 import config from "../../config";
 
 import "./Search.scss";

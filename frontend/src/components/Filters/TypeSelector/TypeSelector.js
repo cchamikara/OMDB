@@ -22,7 +22,7 @@ const TypeSelector = ({ onChange }) => {
           onChange={onTypeChange}
         />
         <Radio
-          value="movies"
+          value="movie"
           selected={selected}
           text="Movies"
           onChange={onTypeChange}
@@ -34,7 +34,7 @@ const TypeSelector = ({ onChange }) => {
           onChange={onTypeChange}
         />
         <Radio
-          value="episodes"
+          value="episode"
           selected={selected}
           text="Episodes"
           onChange={onTypeChange}

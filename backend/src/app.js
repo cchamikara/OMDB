@@ -5,7 +5,7 @@ import config from "./config";
 
 import setCache from "./middleware/setCache";
 import clearCache from "./middleware/clearCache";
-import getOmdbData from "./middleware/getOmdbData";
+import { getMovies, getMovieById } from "./middleware/getOmdbData";
 import getFromCache from "./middleware/getFromCache";
 
 const app = express();
@@ -15,7 +15,15 @@ const api = new express.Router();
 /**
  * End point for movie search
  */
-api.get("/search", getFromCache, getOmdbData, setCache, (req, res) => {
+api.get("/search", getFromCache, getMovies, setCache, (req, res) => {
+  res.set("Cache-Control", "max-age=30");
+  res.status(200).json(res.locals.response);
+});
+
+/**
+ * End point for movie search by id
+ */
+api.get("/searchById", getFromCache, getMovieById, setCache, (req, res) => {
   res.set("Cache-Control", "max-age=30");
   res.status(200).json(res.locals.response);
 });

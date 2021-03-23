@@ -1,8 +1,12 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+
+import { fetchMovieById } from "../../store/actions";
 
 import "./Navigation.scss";
 
 const Navigation = () => {
+  const dispatch = useDispatch();
+
   const {
     movies: { Search: movies, totalResults },
   } = useSelector((state) => state);
@@ -18,7 +22,7 @@ const Navigation = () => {
           <div
             key={imdbID}
             className="Navigation-movie"
-            onClick={() => console.log(Title)}
+            onClick={() => dispatch(fetchMovieById({ id: imdbID }))}
           >
             <div>
               <img

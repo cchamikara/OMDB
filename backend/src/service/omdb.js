@@ -18,3 +18,18 @@ export const fetchMovies = async ({ title, type, year, page }) => {
 
   return data;
 };
+
+export const fetchMovieById = async ({ id }) => {
+  const {
+    omdb: { url, apiKey },
+  } = config;
+
+  const { data } = await axios.get(url, {
+    params: {
+      i: id,
+      apiKey,
+    },
+  });
+
+  return data;
+};

@@ -29,7 +29,6 @@ const Header = () => {
   };
 
   useEffect(() => {
-    console.log(searchData);
     const { title } = searchData;
     if (title) {
       dispatch(fetchMovies(searchData));
