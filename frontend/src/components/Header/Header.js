@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-import { fetchMovies } from "../../store/actions";
+import { fetchMovies, updateSearchData } from "../../store/actions";
 import config from "../../config";
 
 import Search from "../Search/Search";
@@ -31,7 +31,8 @@ const Header = () => {
   useEffect(() => {
     const { title } = searchData;
     if (title) {
-      dispatch(fetchMovies(searchData));
+      dispatch(fetchMovies({ ...searchData, newSearch: true }));
+      dispatch(updateSearchData(searchData));
     }
   }, [searchData, dispatch]);
 

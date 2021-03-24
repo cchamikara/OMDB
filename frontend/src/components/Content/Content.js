@@ -7,7 +7,7 @@ import "./Content.scss";
 const Content = () => {
   const data = useSelector((state) => state);
 
-  const RenderContent = ({ isLoading, searchString, movies }) => {
+  const RenderContent = ({ isLoading, searchString, response, error }) => {
     if (isLoading) {
       return <div className="Notifications">Loading...</div>;
     } else if (!searchString.length) {
@@ -18,8 +18,8 @@ const Content = () => {
           Movie title should be {config.minTitleLength} characters or more
         </div>
       );
-    } else if (movies.Response === "False") {
-      return <div className="Notifications">{movies.Error}</div>;
+    } else if (response === "False") {
+      return <div className="Notifications">{error}</div>;
     } else {
       return (
         <>
