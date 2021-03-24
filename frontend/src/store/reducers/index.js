@@ -34,6 +34,7 @@ const rootReducer = (state = initialState, action) => {
     case START_MOVIE_FETCHING:
       return {
         ...state,
+        selectedMovie: undefined,
         isLoading: true,
         movieList: [],
         page: 1,
@@ -49,6 +50,7 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         ...payload,
+        movieList: [],
         // isLoading: false,
       };
     case SUCCESS_MOVIE_DETAIL_FETCHING:

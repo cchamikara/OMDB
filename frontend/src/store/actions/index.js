@@ -38,7 +38,6 @@ export const fetchMovies = ({ title, year, type, page, newSearch }) => async (
         type: SUCCESS_MOVIE_FETCHING,
         payload: {
           movies: data,
-          selectedMovie: undefined,
           movieList: data.Search,
           totalResults: data.totalResults,
           response: data.Response,

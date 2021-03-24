@@ -10,9 +10,9 @@ const Movie = () => {
   const { selectedMovie } = useSelector((state) => state);
 
   return (
-    <div className="MovieDetails">
+    <>
       {selectedMovie ? (
-        <>
+        <div className="MovieDetails">
           <div className="MovieDetails-brief">
             <img
               src={selectedMovie?.Poster}
@@ -66,11 +66,9 @@ const Movie = () => {
               </div>
             ))}
           </div>
-        </>
-      ) : (
-        <div></div>
-      )}
-    </div>
+        </div>
+      ) : null}
+    </>
   );
 };
 
