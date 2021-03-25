@@ -32,7 +32,7 @@ api.get("/searchById", getFromCache, getMovieById, setCache, (req, res) => {
  * End point for clears cache
  */
 api.get("/clear", clearCache, (req, res) => {
-  res.status(200).send();
+  res.status(200).send({ message: "Cache cleared" });
 });
 
 /**
