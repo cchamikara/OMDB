@@ -1,13 +1,30 @@
 import { useSelector } from "react-redux";
-import { camelCase } from "lodash";
+import { camelCase, keyBy } from "lodash";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookmark } from "@fortawesome/free-regular-svg-icons";
 
+import useWatchList from "../../hooks/useWatchList";
+
+import placeholder from "../../assets/placeholder.png";
 import "./MovieDetails.scss";
 
 const Movie = () => {
   const { selectedMovie } = useSelector((state) => state);
+  const [watchlist, setWatchList] = useWatchList("watchlist", []);
+  const watchListById = keyBy(watchlist, "imdbID");
+  const isInWatchList = watchListById[selectedMovie?.imdbID];
+
+  const addToWatchList = () => {
+    if (isInWatchList) {
+      const newWatchList = (watchlist || []).filter(
+        ({ imdbID }) => imdbID !== selectedMovie?.imdbID
+      );
+      setWatchList(newWatchList);
+    } else {
+      setWatchList([...watchlist, selectedMovie]);
+    }
+  };
 
   return (
     <>
@@ -15,13 +32,24 @@ const Movie = () => {
         <div className="MovieDetails">
           <div className="MovieDetails-brief">
             <img
-              src={selectedMovie?.Poster}
+              src={
+                selectedMovie?.Poster !== "N/A"
+                  ? selectedMovie.Poster
+                  : placeholder
+              }
               alt={selectedMovie?.Title}
               className="MovieDetails-poster"
             />
             <div className="MovieDetails-brief-content">
               <div className="MovieDetails-brief-watchlist">
-                <button className="MovieDetails-brief-watchlist-button">
+                <button
+                  className={`MovieDetails-brief-watchlist-button ${
+                    isInWatchList
+                      ? "MovieDetails-brief-watchlist-selectedButton"
+                      : ""
+                  }`}
+                  onClick={() => addToWatchList()}
+                >
                   <FontAwesomeIcon icon={faBookmark} size="lg" />
                   <span className="MovieDetails-brief-watchlist-button-text">
                     Watchlist

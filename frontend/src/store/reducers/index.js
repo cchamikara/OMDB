@@ -12,9 +12,6 @@ import {
 } from "../constants";
 
 const initialState = {
-  movies: {
-    Search: [],
-  },
   movieList: [],
   selectedMovie: undefined,
   isLoading: false,
@@ -25,6 +22,7 @@ const initialState = {
   error: "",
   searchData: null,
   page: 1,
+  selectedIndex: "",
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -51,7 +49,6 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         ...payload,
         movieList: [],
-        // isLoading: false,
       };
     case SUCCESS_MOVIE_DETAIL_FETCHING:
     case UPDATE_SEARCH_DATA:

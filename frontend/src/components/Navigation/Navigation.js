@@ -3,13 +3,18 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 import { fetchMovieById, fetchMovies } from "../../store/actions";
 
+import placeholder from "../../assets/placeholder.png";
 import "./Navigation.scss";
 
 const Navigation = () => {
   const dispatch = useDispatch();
-  const { searchData, movieList, totalResults, page } = useSelector(
-    (state) => state
-  );
+  const {
+    searchData,
+    movieList,
+    totalResults,
+    page,
+    selectedIndex,
+  } = useSelector((state) => state);
   const currentMovieCount = (movieList || []).length;
 
   return (
@@ -31,7 +36,7 @@ const Navigation = () => {
                 );
               }}
               hasMore={movieList.length < totalResults}
-              loader={<h4>Loading...</h4>}
+              loader={<div>Loading...</div>}
               scrollableTarget="scrollableDiv"
             >
               {(movieList || []).map(
@@ -39,17 +44,20 @@ const Navigation = () => {
                   <div
                     key={`${imdbID}_${index}`}
                     title={Title}
-                    className="Navigation-movie"
-                    onClick={() => dispatch(fetchMovieById({ id: imdbID }))}
+                    className={`Navigation-movie ${
+                      index === selectedIndex ? "Navigation-selected" : ""
+                    }`}
+                    onClick={() =>
+                      dispatch(fetchMovieById({ id: imdbID, index }))
+                    }
                   >
                     <div>
                       <img
-                        src={Poster}
+                        src={Poster !== "N/A" ? Poster : placeholder}
                         alt={Title}
                         className="Navigation-movie-poster"
                       />
                     </div>
-
                     <div className="Navigation-movie-description">
                       <div className="Navigation-movie-title">{Title}</div>
                       <div className="Navigation-movie-year">{Year}</div>

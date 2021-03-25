@@ -69,7 +69,7 @@ export const updateMovieTitle = ({ title }) => (dispatch) => {
   });
 };
 
-export const fetchMovieById = ({ id }) => async (dispatch) => {
+export const fetchMovieById = ({ id, index }) => async (dispatch) => {
   dispatch({ type: START_MOVIE_DETAIL_FETCHING });
 
   try {
@@ -83,6 +83,7 @@ export const fetchMovieById = ({ id }) => async (dispatch) => {
       type: SUCCESS_MOVIE_DETAIL_FETCHING,
       payload: {
         selectedMovie: data,
+        selectedIndex: index,
       },
     });
   } catch (e) {
