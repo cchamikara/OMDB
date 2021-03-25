@@ -12,6 +12,7 @@ import {
   UPDATE_SEARCH_DATA,
   ERROR_MOVIE_FETCHING,
   CONTINUE_MOVIE_FETCHING,
+  TOGGLE_WATCH_LIST,
 } from "../constants";
 
 export const fetchMovies = ({ title, year, type, page, newSearch }) => async (
@@ -54,7 +55,6 @@ export const fetchMovies = ({ title, year, type, page, newSearch }) => async (
       });
     }
   } catch (e) {
-    console.log(e);
     dispatch({ type: FAILED_MOVIE_FETCHING });
   }
 };
@@ -96,6 +96,15 @@ export const updateSearchData = (data) => (dispatch) => {
     type: UPDATE_SEARCH_DATA,
     payload: {
       searchData: data,
+    },
+  });
+};
+
+export const toggleWatchList = (isWatchList) => (dispatch) => {
+  dispatch({
+    type: TOGGLE_WATCH_LIST,
+    payload: {
+      isWatchList,
     },
   });
 };

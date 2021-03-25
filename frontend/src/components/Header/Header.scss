@@ -10,6 +10,13 @@
     align-items: center;
   }
 
+  &-watchList {
+    width: 150px;
+    margin-left: 100px;
+    display: flex;
+    justify-content: center;
+  }
+
   &-filters {
     width: 100%;
     display: flex;

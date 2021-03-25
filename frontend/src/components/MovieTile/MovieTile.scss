@@ -1,0 +1,19 @@
+.MovieTile {
+  width: 170px;
+  padding: 10px;
+  text-align: center;
+
+  &-title {
+    color: black;
+  }
+
+  &-year {
+    padding-top: 5px;
+    font-size: 14px;
+  }
+
+  img {
+    width: 170px;
+    height: 250px;
+  }
+}

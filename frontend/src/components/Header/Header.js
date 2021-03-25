@@ -1,20 +1,25 @@
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-import { fetchMovies, updateSearchData } from "../../store/actions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBookmark } from "@fortawesome/free-regular-svg-icons";
+
+import {
+  fetchMovies,
+  updateSearchData,
+  toggleWatchList,
+} from "../../store/actions";
 import config from "../../config";
 
-import Search from "../Search/Search";
-import YearSelector from "../Filters/YearSelector/YearSelector";
-import TypeSelector from "../Filters/TypeSelector/TypeSelector";
+import { Search, YearSelector, TypeSelector, Button } from "../";
 
 import "./Header.scss";
 
 const Header = () => {
   const dispatch = useDispatch();
-
   const { min, max } = config.yearRange;
 
+  const { isWatchList } = useSelector((state) => state);
   const [searchData, setSearchData] = useState({
     title: "",
     year: `${min}-${max}`,
@@ -40,6 +45,15 @@ const Header = () => {
     <div className="Header">
       <div className="Header-search">
         <Search onChange={onChange} />
+        <div className="Header-watchList">
+          <Button
+            selected={isWatchList}
+            onClick={() => dispatch(toggleWatchList(!isWatchList))}
+          >
+            <FontAwesomeIcon icon={faBookmark} size="lg" />
+            <span>Watchlist</span>
+          </Button>
+        </div>
       </div>
       <div className="Header-filters">
         <YearSelector onChange={onChange} />

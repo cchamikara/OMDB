@@ -5,8 +5,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookmark } from "@fortawesome/free-regular-svg-icons";
 
 import useWatchList from "../../hooks/useWatchList";
-
+import { Button } from "../";
 import placeholder from "../../assets/placeholder.png";
+
 import "./MovieDetails.scss";
 
 const Movie = () => {
@@ -33,36 +34,30 @@ const Movie = () => {
           <div className="MovieDetails-brief">
             <img
               src={
-                selectedMovie?.Poster !== "N/A"
+                selectedMovie.Poster !== "N/A"
                   ? selectedMovie.Poster
                   : placeholder
               }
-              alt={selectedMovie?.Title}
+              alt={selectedMovie.Title}
               className="MovieDetails-poster"
             />
             <div className="MovieDetails-brief-content">
               <div className="MovieDetails-brief-watchlist">
-                <button
-                  className={`MovieDetails-brief-watchlist-button ${
-                    isInWatchList
-                      ? "MovieDetails-brief-watchlist-selectedButton"
-                      : ""
-                  }`}
+                <Button
+                  selected={isInWatchList}
                   onClick={() => addToWatchList()}
                 >
                   <FontAwesomeIcon icon={faBookmark} size="lg" />
-                  <span className="MovieDetails-brief-watchlist-button-text">
-                    Watchlist
-                  </span>
-                </button>
+                  <span>Watchlist</span>
+                </Button>
               </div>
               <div>
                 <div className="MovieDetails-brief-title">
-                  {selectedMovie?.Title}
+                  {selectedMovie.Title}
                 </div>
                 <div className="MovieDetails-brief-short">
                   <div className="MovieDetails-brief-rate">
-                    {selectedMovie?.Rated}
+                    {selectedMovie.Rated}
                   </div>
                   <span>{selectedMovie?.Year}</span>
                   <span>.</span>

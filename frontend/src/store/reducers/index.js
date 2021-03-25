@@ -9,6 +9,7 @@ import {
   UPDATE_SEARCH_DATA,
   ERROR_MOVIE_FETCHING,
   CONTINUE_MOVIE_FETCHING,
+  TOGGLE_WATCH_LIST,
 } from "../constants";
 
 const initialState = {
@@ -23,6 +24,7 @@ const initialState = {
   searchData: null,
   page: 1,
   selectedIndex: "",
+  isWatchList: false,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -36,6 +38,7 @@ const rootReducer = (state = initialState, action) => {
         isLoading: true,
         movieList: [],
         page: 1,
+        isNetworkError: false,
       };
     case CONTINUE_MOVIE_FETCHING:
     case START_MOVIE_DETAIL_FETCHING:
@@ -43,12 +46,14 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         ...payload,
         isLoading: true,
+        isNetworkError: false,
       };
     case SEARCHING_MOVIE:
       return {
         ...state,
         ...payload,
         movieList: [],
+        isNetworkError: false,
       };
     case SUCCESS_MOVIE_DETAIL_FETCHING:
     case UPDATE_SEARCH_DATA:
@@ -57,6 +62,7 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         ...payload,
         isLoading: false,
+        isWatchList: false,
       };
     case SUCCESS_MOVIE_FETCHING:
       return {
@@ -72,6 +78,11 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         isNetworkError: true,
+      };
+    case TOGGLE_WATCH_LIST:
+      return {
+        ...state,
+        ...payload,
       };
     default:
       return state;
