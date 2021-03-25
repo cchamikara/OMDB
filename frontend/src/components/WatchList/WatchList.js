@@ -8,9 +8,15 @@ const WatchList = () => {
 
   return (
     <div className="WatchList">
-      {watchList.map((movie, index) => (
-        <MovieTitle key={`${movie.imdbID}_${index}`} {...movie} />
-      ))}
+      {watchList.length ? (
+        watchList.map((movie, index) => (
+          <MovieTitle key={`${movie.imdbID}_${index}`} {...movie} />
+        ))
+      ) : (
+        <div className="WatchList-empty">
+          Start adding movies to watchlist from movie details screen
+        </div>
+      )}
     </div>
   );
 };
