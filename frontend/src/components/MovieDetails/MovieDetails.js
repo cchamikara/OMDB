@@ -57,21 +57,32 @@ const Movie = () => {
                 </div>
                 <div className="MovieDetails-brief-short">
                   <div className="MovieDetails-brief-rate">
-                    {selectedMovie.Rated}
+                    {selectedMovie.Rated !== "N/A" && selectedMovie.Rated}
                   </div>
-                  <span>{selectedMovie?.Year}</span>
+                  <span>
+                    {selectedMovie.Year !== "N/A" && selectedMovie.Year}
+                  </span>
                   <span>.</span>
-                  <span>{selectedMovie?.Genre}</span>
+                  <span>
+                    {selectedMovie.Genre !== "N/A" && selectedMovie.Genre}
+                  </span>
                   <span>.</span>
-                  <span>{selectedMovie?.Runtime}</span>
+                  <span>
+                    {selectedMovie.Runtime !== "N/A" && selectedMovie.Runtime}
+                  </span>
+                  <span>.</span>
+                  <span>
+                    {selectedMovie.BoxOffice !== "N/A" &&
+                      selectedMovie.BoxOffice}
+                  </span>
                 </div>
                 <div className="MovieDetails-brief-cast">
                   <div className="MovieDetails-brief-actors">
-                    {selectedMovie?.Actors}
+                    {selectedMovie.Actors !== "N/A" && selectedMovie.Actors}
                   </div>
                   <div className="MovieDetails-brief-director">
-                    {selectedMovie?.Director !== "N/A" &&
-                      `By ${selectedMovie?.Director}`}
+                    {selectedMovie.Director !== "N/A" &&
+                      `By ${selectedMovie.Director}`}
                   </div>
                 </div>
               </div>
